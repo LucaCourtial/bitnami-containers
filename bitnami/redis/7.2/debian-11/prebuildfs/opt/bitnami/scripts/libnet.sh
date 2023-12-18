@@ -22,7 +22,7 @@
 dns_lookup() {
     local host="${1:?host is missing}"
     local ip_version="${2:-}"
-    getent "ahosts${ip_version}" "$host" | awk '/STREAM/ {print $1 }' | head -n 1
+    getent -s hosts:dns "ahosts${ip_version}" "$host" | awk '/STREAM/ {print $1 }' | head -n 1
 }
 
 #########################
